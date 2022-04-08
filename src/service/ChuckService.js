@@ -1,9 +1,14 @@
 import HttpService from "./HttpService";
 
 class ChuckService extends HttpService {
-  getRandomJoke = async () => {
+  getRandomJoke = async (category) => {
     const { data } = await this.client.get(
-      "https://api.chucknorris.io/jokes/random"
+      "https://api.chucknorris.io/jokes/random",
+      {
+        params: {
+          category,
+        },
+      }
     );
 
     return data;
